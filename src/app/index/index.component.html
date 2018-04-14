@@ -1,4 +1,29 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="space-between center">
   <span>AngularTodo</span>
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon></button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="/">
+      <mat-icon>dialpad</mat-icon>
+      <span>home</span>
+    </button>
+    <button mat-menu-item routerLink="/jquery">
+      <mat-icon>dialpad</mat-icon>
+      <span>jquery</span>
+    </button>
+    <button mat-menu-item routerLink="/angular">
+      <mat-icon>dialpad</mat-icon>
+      <span>angular</span>
+    </button>
+    <button mat-menu-item >
+      <mat-icon>input</mat-icon>
+      <span>http</span>
+    </button>
+    <button mat-menu-item >
+      <mat-icon>input</mat-icon>
+      <span>news</span>
+    </button>
+  </mat-menu>
+
 </mat-toolbar>
 <router-outlet></router-outlet>
