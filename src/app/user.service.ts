@@ -25,4 +25,7 @@ export class UserService {
     // api ?-> optional
     return this.http.get('http://www.javabrain.kr:8080/api/todo');
   }*/
+  addTodo(params: TodoVO): Observable<TodoVO> {
+    return this.http.post<TodoVO> ('http://www.javabrain.kr:8080/api/todo', params, {headers: this.headers});
+  }
 }

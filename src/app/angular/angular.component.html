@@ -5,6 +5,18 @@
     </mat-card-title>
   </mat-card-header>
   <mat-card-content>
+    <!--
+    <div fxLayout="row">
+      <input type="text" placeholder="할일" id="input_todo" fxFlex="4 1 auto" [(ngModel)]="newTodo.todo">
+      <button type="button" fxFlex="1 1 auto" class="active" (click)="addTodo()">추가</button>
+    </div>
+  -->
+    <form ngNativeValidate (submit)="addTodo()">
+      <div fxLayout="row">
+        <input type="text" placeholder="할일" id="input_todo" fxFlex="4 1 auto" [(ngModel)]="newTodo.todo" required name="todo">
+        <button type="submit" fxFlex="1 1 auto" class="active" (click)="addTodo()">추가</button>
+      </div>
+    </form>
     <div class="table">
       <div class="tr">
         <div class="th">완료</div>
