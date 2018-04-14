@@ -1,30 +1,23 @@
-<mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="space-between center">
+<mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="start center">
   <span>AngularTodo</span>
   <span fxFlex="1 1 auto"></span>
   <button mat-icon-button [matMenuTriggerFor]="menu">
-    <mat-icon>menu</mat-icon></button>
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item routerLink="/">
-      <mat-icon>dialpad</mat-icon>
-      <span>home</span>
-    </button>
-    <button mat-menu-item routerLink="/jquery">
-      <mat-icon>dialpad</mat-icon>
-      <span>jquery</span>
-    </button>
-    <button mat-menu-item routerLink="/angular">
-      <mat-icon>dialpad</mat-icon>
-      <span>angular</span>
-    </button>
-    <button mat-menu-item >
-      <mat-icon>input</mat-icon>
-      <span>http</span>
-    </button>
-    <button mat-menu-item >
-      <mat-icon>input</mat-icon>
-      <span>news</span>
-    </button>
-  </mat-menu>
-
+    <mat-icon>more_vert</mat-icon>
+  </button>
 </mat-toolbar>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item routerLink="/">
+    <mat-icon>dialpad</mat-icon>
+    <span>home</span>
+  </button>
+  <button mat-menu-item routerLink="/jquery">
+    <mat-icon>voicemail</mat-icon>
+    <span>jquery</span>
+  </button>
+  <button mat-menu-item routerLink="/angular">
+    <mat-icon>notifications_off</mat-icon>
+    <span>angular</span>
+  </button>
+</mat-menu>
+
 <router-outlet></router-outlet>
