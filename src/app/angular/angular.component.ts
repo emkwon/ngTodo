@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../user.service';
 import {TodoVO} from '../domain/todo.vo';
-import {animate, state, style, transition, trigger} from '@angular/animations';
+import {animate, keyframes, state, style, transition, trigger} from '@angular/animations';
 import {getBodyNode} from '@angular/animations/browser/src/render/shared';
 
 @Component({
@@ -19,10 +19,15 @@ import {getBodyNode} from '@angular/animations/browser/src/render/shared';
       /*transition('* => void', [
         animate(300, style({transform: 'translate(0, -100%)', opacity: '0'}))
       ])*/
+      transition('in => void', [
+        animate(300, keyframes([
+          style({opacity: 1, transform: 'translate(0, 0)'}),
+          style({opacity: 1, transform: 'translate(-100px, 0)'}),
+          style({opacity: 0, transform: 'translate(100%, 0)'})
+        ]))
+      ]),
     ])
-
-
-  ]
+  ],
 })
 export class AngularComponent implements OnInit {
 
