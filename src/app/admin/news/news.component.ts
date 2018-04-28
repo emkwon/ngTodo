@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AdminService} from '../admin.service';
+import {NewsVO} from '../../domain/news.vo';
 
 @Component({
   selector: 'app-news',
@@ -6,10 +8,36 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./news.component.scss']
 })
 export class NewsComponent implements OnInit {
+  newsList: NewsVO[];
 
-  constructor() { }
+  constructor(private adminService: AdminService) { }
 
   ngOnInit() {
+    const params = {
+        start_index : 0,
+        page_size: 5
+    };
+
+   /* this.adminService.findNews(parmas)
+      .subscribe(body =>
+        console.log(body);
+      // body의 data 필드를 newsList에 담기
+      // any를 VO로 할려니깐 에러.
+      // Object.assign(this.newsList, body);
+
+      // 정답
+      this.newsList = body.data;
+      console.log('######');
+      console.log(this.newsList); )*/
+
+    this.adminService.findNews(params)
+      .subscribe(body => {
+        console.log(body);
+        // body의 data 필드를 newsList에 담기
+        // this.newsList = body.data;
+        // console.log('####');
+        // console.log(this.newsList);
+      });
   }
 
 }
