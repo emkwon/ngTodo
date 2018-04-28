@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {TodoVO} from './domain/todo.vo';
 import {environment} from '../environments/environment';
+import {ResultVo} from './domain/result.vo';
 
 @Injectable()
 export class UserService {
@@ -35,6 +36,12 @@ export class UserService {
   modifyTodo(params: TodoVO): Observable<TodoVO>  {  // 리턴타입 지정
     return this.http.put<TodoVO>(this.SERVER + '/api/todo', params, {headers: this.headers});
 
+  }
+
+
+  // 할일 삭제 api
+  removeTodo(todo_id: number): Observable<ResultVo> {
+    return this.http.delete<ResultVo>(this.SERVER + `/api/todo?todo_id=${todo_id}`);
   }
 
 }
