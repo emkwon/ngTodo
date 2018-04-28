@@ -18,6 +18,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {UserService} from './user.service';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
+import { HighlightDirective } from './highlight.directive';
 
 const route: Routes = [
   {path: '', component: IndexComponent, children: [
@@ -34,6 +35,7 @@ const route: Routes = [
     IndexComponent,
     HomeComponent,
     JqueryComponent,
+    HighlightDirective,
     AngularComponent
   ],
   imports: [
