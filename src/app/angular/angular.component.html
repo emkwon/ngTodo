@@ -11,10 +11,24 @@
       <button type="button" fxFlex="1 1 auto" class="active" (click)="addTodo()">추가</button>
     </div>
   -->
+    <!-- material 사용
     <form ngNativeValidate (submit)="addTodo()">
-      <div fxLayout="row">
-        <input type="text" placeholder="할일" id="input_todo" fxFlex="4 1 auto" [(ngModel)]="newTodo.todo" required name="todo">
-        <button type="submit" fxFlex="1 1 auto" class="active" (click)="addTodo()">추가</button>
+      <div fxLayout="row" fxLayoutAlign="start start">
+        <mat-form-field fxflex="4 1 auto">
+          <input matInput placeholder="할일" id="input_todo" [(ngModel)]="newTodo.todo" required name="todo">
+        </mat-form-field>
+        <button type="submit" mat-raised-button color="primary" fxFlex="1 1 auto" class="active" (click)="addTodo()">추가</button>
+
+      </div>
+    </form>
+    -->
+    <form #myForm="ngForm" (submit)="addTodo()">
+      <div fxLayout="row" fxLayoutAlign="start start">
+        <mat-form-field fxflex="4 1 auto">
+          <input matInput placeholder="할일" id="input_todo" [(ngModel)]="newTodo.todo" #name="ngModel" required name="todo">
+          <mat-hint align="start" style="color:red;">{{!name.value ? '할일을 입력하세요' : ''}}</mat-hint>
+        </mat-form-field>
+        <button type="submit" mat-raised-button color="primary" fxFlex="1 1 auto" class="active" (click)="addTodo()" [disabled]="!myForm.form.valid">추가</button>
       </div>
     </form>
     <div class="table">

@@ -9,7 +9,10 @@ import { HomeComponent } from './home/home.component';
 import { JqueryComponent } from './jquery/jquery.component';
 import { AngularComponent } from './angular/angular.component';
 import {RouterModule, Routes} from '@angular/router';
-import {MatButtonModule, MatCardModule, MatIconModule, MatMenuModule, MatToolbarModule} from '@angular/material';
+import {
+  MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule,
+  MatToolbarModule
+} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {UserService} from './user.service';
@@ -45,6 +48,8 @@ const route: Routes = [
     MatCardModule,
     HttpClientModule,
     FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
