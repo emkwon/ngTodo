@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {UserService} from '../user.service';
 import {TodoVO} from '../domain/todo.vo';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import {getBodyNode} from '@angular/animations/browser/src/render/shared';
 
 @Component({
   selector: 'app-angular',
@@ -87,5 +88,17 @@ export class AngularComponent implements OnInit {
 
     // 템플릿전환
     todo.isEdited = false;
+  }
+
+  modify(todo: TodoVO) {
+    this.userService.modifyTodo(todo) // observable이라서 subscribe로
+      .subscribe( body => {
+        // 기존 todo의 메모리주소를 변경하면 안되고 값만 복사해서 넣어야 한다.
+        Object.assign(todo, body);
+        console.log(todo);
+        todo.isEdited = false;
+      })
+    ;
+
   }
 }
