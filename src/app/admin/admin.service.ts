@@ -29,4 +29,17 @@ export class AdminService {
   addNews(news: NewsVO): Observable<ResultVO> {
     return this.http.post<ResultVO>(this.SERVER + '/api/news', news, {headers: this.headers});
   }
+
+  imageUpload(formData: FormData) {
+    return this.http.post(this.SERVER + '/api/imageUpload', formData);
+  }
+
+  /*imageUpload(formData: FormData) {
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'multipart/form-data');
+    // 브라우저가 자동 생성함 .
+    headers.append('Accept', 'application/json');
+
+    return this.http.post(this.SERVER + '/api/imageUpload', formData, {headers: headers}) .toPromise();
+  }*/
 }
