@@ -26,6 +26,9 @@ export class WriteComponent implements OnInit {
           this.router.navigateByUrl('/admin/news');
         }
       });
+
+    // 2) 이벤트 발생자 : 뉴스 등록 이벤트 발생
+    this.adminService.refresh.next(true);
   }
 
   fileChange(event: any) {
@@ -55,6 +58,8 @@ export class WriteComponent implements OnInit {
         this.news.content = `<img src="http://www.javabrain.kr${body['value']}" style="max-width: 100%;">`;
       }
     });
+
+
 
     /*
     if (this.fileList && this.fileList.length > 0) {

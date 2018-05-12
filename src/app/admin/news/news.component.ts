@@ -18,6 +18,14 @@ export class NewsComponent implements OnInit {
   }
 
   ngOnInit() {
+    // 1) 이벤트 등록
+    this.adminService.refresh$.subscribe( data => {
+          if (data) {
+            // 뉴스가 등록되거나 삭제되면 목록 갱신
+            this.getNewsList();
+          }
+      }
+    );
     this.getNewsList();
   }
 
