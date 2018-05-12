@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AdminService} from '../admin.service';
 import {NewsVO} from '../../domain/news.vo';
 import {PageVO} from '../../domain/page.vo';
+import {ActivatedRoute, Router, RouterOutlet} from '@angular/router';
 
 @Component({
   selector: 'app-news',
@@ -12,7 +13,7 @@ export class NewsComponent implements OnInit {
   newsList: NewsVO[];
   page: PageVO;
 
-  constructor(private adminService: AdminService) {
+  constructor(private adminService: AdminService, private router: Router) {
     this.page = new PageVO(0, 5, 0);
   }
 
@@ -20,6 +21,9 @@ export class NewsComponent implements OnInit {
     this.getNewsList();
   }
 
+  gotoView(news: NewsVO) {
+    this.router.navigateByUrl(`/admin/news/view/${news.news_id}`);
+  }
 
   getNewsList() {
     const params = {
