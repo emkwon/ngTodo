@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {TodoVO} from './domain/todo.vo';
 import {environment} from '../environments/environment';
-import {ResultVo} from './domain/result.vo';
+import {ResultVO} from './domain/result.vo';
 
 @Injectable()
 export class UserService {
@@ -40,8 +40,8 @@ export class UserService {
 
 
   // 할일 삭제 api
-  removeTodo(todo_id: number): Observable<ResultVo> {
-    return this.http.delete<ResultVo>(this.SERVER + `/api/todo?todo_id=${todo_id}`);
+  removeTodo(todo_id: number): Observable<ResultVO> {
+    return this.http.delete<ResultVO>(this.SERVER + `/api/todo?todo_id=${todo_id}`);
   }
 
 }
