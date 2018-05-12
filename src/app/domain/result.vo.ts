@@ -1,6 +1,6 @@
-export class ResultVo {
+export class ResultVO {
   result: number;
   value: string;
-  date?: any;
+  data?: any;
   total?: number;
 }

@@ -5,13 +5,21 @@
     </mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <div class="board-box" fxLayout="column" *ngFor= "let news of newsList" >
+    <div class="board-box" fxLayout="column" *ngFor="let news of newsList">
       <div fxLayout="row" fxLayoutAlign="space-between center">
-        <span>{{news.title}}</span>
-        <span *ngIf="news.comment_count" sytle="color: red;" class="ml-1">[{{news.comment_count}}]</span>
+        <div>
+          <span>{{news.title}}</span>
+          <span *ngIf="news.comment_count" style="color: red;" class="ml-1">[ {{news.comment_count}} ]</span>
+        </div>
+
+        <span>{{news.created}}</span>
       </div>
-      <span>{{news.created}}</span>
     </div>
-    <!– 페이지네이션 -->
+    <!-- 페이지네이션 -->
+    <mat-paginator [length]="page.totalCount" [pageIndex]="page.pageIndex"
+                   [pageSize]="page.pageSize"
+                   [pageSizeOptions]="page.pageSizeOptions" (page)="pageChanged($event)">
+    </mat-paginator>
+
   </mat-card-content>
 </mat-card>

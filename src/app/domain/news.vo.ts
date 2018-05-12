@@ -5,4 +5,5 @@ export class NewsVO {
   created: string;
   updated: string;
   comment_count: string;
+
 }
