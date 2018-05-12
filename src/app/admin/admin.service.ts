@@ -50,4 +50,8 @@ export class AdminService {
   }*/
 
   //
+
+  removeNews(news_id: number): Observable<ResultVO> {
+    return this.http.delete<ResultVO>(this.SERVER + `/api/news?news_id=${news_id}`);
+  }
 }

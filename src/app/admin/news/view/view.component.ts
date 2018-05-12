@@ -4,6 +4,9 @@ import {AdminService} from '../../admin.service';
 import {NewsVO} from '../../../domain/news.vo';
 import {DomSanitizer} from '@angular/platform-browser';
 import {SafeHtml} from '@angular/platform-browser/src/security/dom_sanitization_service';
+import {MatDialog} from '@angular/material';
+import {ViewDialogComponent} from './view.dialog.component';
+
 
 @Component({
   selector: 'app-view',
@@ -14,7 +17,9 @@ export class ViewComponent implements OnInit {
   news: NewsVO;
   html: SafeHtml;
 
-  constructor(private route: ActivatedRoute, private adminService: AdminService, private  sanitizer: DomSanitizer) {
+  constructor(private route: ActivatedRoute, private adminService: AdminService, private  sanitizer: DomSanitizer
+              , private dialog: MatDialog
+  ) {
     // console.log(this.route.url);
     // view 객체를 호출할때, 첫번째만 생성, 두번째부터는 안 찍힌다.
     // => 한번만 생성
@@ -39,4 +44,15 @@ export class ViewComponent implements OnInit {
   ngOnInit() {
   }
 
+  confirmDelete(news: NewsVO) {
+   this.dialog.open(ViewDialogComponent, {data: { content : `${news.title}를 삭제하시겠습니까?`}})
+     .afterClosed().subscribe(data => {
+      if (data) {
+        // 삭제 로직 구현
+        console.log(data);
+      }
+    });
+
+
+  }
 }

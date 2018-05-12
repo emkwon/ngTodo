@@ -1,0 +1,8 @@
+
+<mat-dialog-content>
+  {{data.content}}
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="dialogRef.close(true)"> 확인 </button>
+  <button mat-raised-button (click)="dialogRef.close(false)"> 취소 </button>
+</mat-dialog-actions>
